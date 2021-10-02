@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <!-- chat box -->
+  <div class="chat-box">
+    <!-- client -->
+    <div class="client">
+      <img [src]="room?.image" alt="logo" />
+      <div class="client-info">
+        <h2>{{ room?.name }}</h2>
+        <p>online</p>
+      </div>
+    </div>
+
+    <!-- main chat section -->
+    <div class="chats" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+      <ng-container *ngFor="let msg of output">
+        <div [ngClass]="msg.user_name === sender?.user_name ? 'my-chat' : 'client-chat'">
+          {{ msg.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- input field section -->
+    <div class="chat-input">
+      <input
+      (keypress)="messageTyping()"
+        type="text"
+        placeholder="Enter Message"
+        [(ngModel)]="inputMessage"
+        (keyup.enter)="sendMessage()"
+        
+      />
+      <button class="send-btn" (click)="sendMessage()">
+        <img src="../../../assets/images/send.png" alt="send-btn" />
+      </button>
+    </div>
+  </div>
+
+  <!-- button -->
+  <!-- <div class="chat-btn">
+      <img src="Circle-icons-chat.svg.png" alt="chat box icon btn">
+  </div> -->
+</div>

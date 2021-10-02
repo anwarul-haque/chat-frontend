@@ -1,0 +1,33 @@
+<div class="container">
+  <ng-container *ngIf="roomList.length; else other_content">
+    <div
+      class="card mb-3 my-5"
+      style="max-width: 540px; cursor: pointer"
+      (click)="chat(room)"
+
+      *ngFor="let room of roomList"
+    >
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img
+            [src]="room.image"
+            class="card-img"
+            alt="..."
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ room.name }}</h5>
+            <!-- <p class="card-text">{{ user.lastMesage }}</p> -->
+            <!-- <p class="card-text">
+              <small class="text-muted">Last updated 3 mins ago</small>
+            </p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #other_content>
+  <div class="card mb-3 my-5">No user founds</div></ng-template>
